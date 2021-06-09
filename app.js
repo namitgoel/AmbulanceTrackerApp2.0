@@ -22,7 +22,7 @@ const port = process.env.PORT;
 app.use('/public', express.static('public'));
 app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({extended:false}))
-// app.use(cookie_parser());
+app.use(cookie_parser());
 
 // using routes
 app.use("/", loginPage);
