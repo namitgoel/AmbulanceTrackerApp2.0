@@ -29,8 +29,8 @@ exports.sigin = async (req,res) =>{
           }else{
             const match = await bcrypt.compare(req.body.password, result[0].password);
             if(match){
-              // res.cookie('username', values[0]);
-              // res.cookie('role', role);
+              res.cookie('username', values[0]);
+              res.cookie('role', role);
               req.username = values[0];
               req.role = role;
               // console.log(req);

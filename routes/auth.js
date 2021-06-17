@@ -1,15 +1,19 @@
 var express = require("express");
 var router = express.Router();
-const {home, records, renderForm, register, registercsv} = require("../controllers/auth");
+const {home, records, renderForm, register, registercsv, logout} = require("../controllers/auth");
+const {isAuthority}=require('../middlewares/authorization')
+const {isLoggedIn}=require('../middlewares/authentication')
 
 
-router.get("/", home);
+router.get("/", [isLoggedIn, isAuthority], home);
 
-router.get("/records", records);
+router.get("/records", [isLoggedIn, isAuthority], records);
 
-router.get("/register", renderForm);
+router.get("/register", [isLoggedIn, isAuthority], renderForm);
 
-router.post("/registerStudent", register);
+router.post("/registerStudent", [isLoggedIn, isAuthority], register);
 
-router.post("/registercsv", registercsv);
+router.post("/registercsv", [isLoggedIn, isAuthority], registercsv);
+
+router.post("/logout", [isLoggedIn, isAuthority], logout);
 module.exports = router;

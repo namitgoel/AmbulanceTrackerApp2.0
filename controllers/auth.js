@@ -90,3 +90,9 @@ exports.registercsv = async (req,res)=>{
     res.sendStatus(500);
   }
 }
+
+exports.logout = (req,res)=>{
+  res.clearCookie('username');
+  res.clearCookie('role');
+  res.redirect("/");
+}
