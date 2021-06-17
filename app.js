@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cookie_parser = require("cookie-parser");
-// const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 // const studentRoutes = require('./routes/student');
 // const driverRoutes = require('./routes/driver');
 const loginPage = require('./routes/login');
@@ -26,6 +26,7 @@ app.use(cookie_parser());
 
 // using routes
 app.use("/", loginPage);
+app.use("/authority",authRoutes);
 // app.use("/student", studentRoutes);
 // app.use("/driver", driverRoutes);
 // app.use("/login", loginRoutes);

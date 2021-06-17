@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>Register</h2>
+
+
+<div class="container mt-3">
+    <form>
+        <p>Data file:</p>
+        <div class="custom-file col-lg-12 mb-3">
+          <input type="file" class="custom-file-input" id="customFile" name="filename">
+          <label class="custom-file-label" for="customFile">Choose csv File</label>
+        </div>
+
+        <div class="mt-3">
+          <button type="submit" id="csvbtn" class="form-control btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<form action="/authority/registerStudent" method="post">
+  <label for="fname">Roll Number:</label><br>
+  <input type="text" id="rollno" name="rollno" required><br>
+  
+  <label for="lname">Name:</label><br>
+  <input type="text" id="name" name="name" required><br><br>
+  
+  <label for="lname">Email:</label><br>
+  <input type="text" id="email" name="email" required><br><br>
+  
+  <label for="lname">Mobile:</label><br>
+  <input type="text" id="mobile" name="mobile" required><br><br>
+  
+  <label for="lname">Password:</label><br>
+  <input type="password" id="pass" name="password" required><br><br>
+  
+  <input type="submit" value="Submit">
+</form> 
+</body>
+ <script src="/public/js/register.js"></script>
+</html>
