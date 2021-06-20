@@ -1,157 +1,104 @@
 <!DOCTYPE html>
-<html>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+<html lang="en">
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
+<head>
 
-/* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+    <title>Login</title>
 
-button:hover {
-  opacity:1;
-}
+    <!-- Custom fonts for this template-->
+    <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
+    <!-- Custom styles for this template-->
+    <link href="../public/css/sb-admin-2.min.css" rel="stylesheet">
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
+</head>
 
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
+<body class="bg-gradient-primary">
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #474e5d;
-  padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
- 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-</style>
-<body>
-
-<h2>Modal Signup Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
-
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/sigin" method="POST">
     <div class="container">
-      <hr>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-      <label for="cars">Choose a role:</label>
-  <select id="cars" name="role">
-    <option value="admin">admin</option>
-    <option value="authority">fac</option>
-    <option value="student">stud</option>
-    <option value="driver">driver</option>
-  </select>
-      <div class="clearfix">
-       <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                    </div>
+
+                                    <form class="user" method="post" action="/sigin">
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Username / Roll Number" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"
+                                                id="exampleInputPassword" name="password" placeholder="Password" required>
+                                        </div>
+                                        
+                                        <select id="form_action" class="form-control" name="role" required>
+                                              <option value="" disabled selected>Role</option>
+                                              <option value="admin">Admin</option>
+                                              <option value="authority">Authority</option>
+                                              <option value="driver">Driver</option>
+                                              <option value="student">Student</option>
+                                        </select>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                       <div class="mt-3">
+                                            <button type="submit" class="form-control btn btn-primary">Login</button>
+                                        </div>
+                                       
+                                        
+                                    </form>
+
+                                    <!-- <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </form>
-</div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
+    <!-- Bootstrap core JavaScript-->
+    <script src="../public/vendor/jquery/jquery.min.js"></script>
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+    <!-- Core plugin JavaScript-->
+    <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../public/js/sb-admin-2.min.js"></script>
 
 </body>
+
 </html>
