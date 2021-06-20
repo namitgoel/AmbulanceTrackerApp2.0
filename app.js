@@ -39,6 +39,19 @@ var server = app.listen(port, () => {
 })
 
 
+var io = socket(server);
+
+//here socket = the particular socket established between client and server
+io.on('connection' , function(socket){
+  console.log(`connection established between server and client @ ${socket.id}`);
+  var location = [26.082301516170155, 91.55944356559085]
+  if(true){
+  	var flag = true;
+  	socket.emit("flag",flag);
+  	socket.emit("location",location);
+  }
+})
+
 //socket.io
 //
 // var io = socket(server);

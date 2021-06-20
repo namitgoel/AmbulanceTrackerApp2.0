@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" ></script>
+  <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+</head>
+<style type="text/css">
+  #map {
+  height:85%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<body>
+
+<h2>Map</h2>
+
+  <div id="map"></div>
+  <!-- <div id="ride">Currently no ride</div> -->
+</body>
+ <script src="/public/js/authMap.js"></script>
+ <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKPNyswxEm2yGfKN2KF2HX1LJdT5vIQes&callback=initMap&libraries=&v=weekly"
+      
+    ></script>
+</html>

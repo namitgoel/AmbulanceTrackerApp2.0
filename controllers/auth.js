@@ -91,6 +91,10 @@ exports.registercsv = async (req,res)=>{
   }
 }
 
+exports.track = (req, res) =>{
+  res.render('authMap');
+}
+
 exports.logout = (req,res)=>{
   res.clearCookie('username');
   res.clearCookie('role');
