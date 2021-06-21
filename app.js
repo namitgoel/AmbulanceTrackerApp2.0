@@ -2,14 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cookie_parser = require("cookie-parser");
-// const authRoutes = require('./routes/auth');
-// const studentRoutes = require('./routes/student');
+const {checkStatus} = require('./functions/functions');
+const studentHome = require('./routes/student');
 // const driverRoutes = require('./routes/driver');
 const loginPage = require('./routes/login');
 // const adminRoutes = require("./routes/admin");
 // const {alterFlag, startLatLng, endLatLng, getLocation} = require("./functions/functions");
 var socket = require("socket.io");
-
+const session = require('express-session');
+const flash = require('connect-flash');
+const con = require('./functions/dbConnection.js');
 
 var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
@@ -23,19 +25,62 @@ app.use('/public', express.static('public'));
 app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(cookie_parser());
+//
+// app.use(express.session({ cookie: { maxAge: 60000 }}));
+// app.use(flash());
+
+
 
 // using routes
 app.use("/", loginPage);
-// app.use("/student", studentRoutes);
-// app.use("/driver", driverRoutes);
-// app.use("/login", loginRoutes);
-// app.use("/admin",adminRoutes);
+app.use("/student", studentHome);
+
+//sockets
+var socket = require('socket.io');
+
 
 
 //firing up the server
 var server = app.listen(port, () => {
   console.log('app listening on port: ' + port)
 })
+
+var io = socket(server);
+
+//here socket = the particular socket established between client and server
+io.on('connection' , function(socket){
+  console.log(`connection established between server and client @ ${socket.id}`);
+
+  //socket b/w student and server
+  socket.on('checkAvailibilty',async function(){
+    console.log("sending ambulance status....");
+    //emitting status
+    try{
+      var sql = 'select available from temp_data where ambulance_no = 1;';
+      await con.query(sql, (err,result)=>{
+          if(err){
+            console.log(err);
+
+          }else{
+            result = JSON.parse(JSON.stringify(result));
+            //console.log(result[0].available);
+            var available = result[0].available;
+            console.log(available);
+            socket.emit('availabiltyStatus',{available: available});
+          }
+        });
+      }catch(err){
+        console.log(err);
+      }
+  });
+});
+// app.use("/student", studentRoutes);
+// app.use("/driver", driverRoutes);
+// app.use("/login", loginRoutes);
+// app.use("/admin",adminRoutes);
+
+
+
 
 
 //socket.io

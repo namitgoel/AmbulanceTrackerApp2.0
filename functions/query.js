@@ -3,7 +3,7 @@ exports.getQuery = (role) => {
   if(role === "authority"){
     sql = "select username, password from authority where username=?";
   }else if(role === "student"){
-    sql = "select rollnumber, password from student where rollnumber=?";
+    sql = "select roll_no, password from student where roll_no=?";
   }else if(role === "driver"){
     sql = "select username, password from driver where username=?";
   }else{
