@@ -11,8 +11,9 @@ const loginPage = require('./routes/login');
 // const adminRoutes = require("./routes/admin");
 // const {alterFlag, startLatLng, endLatLng, getLocation} = require("./functions/functions");
 var socket = require("socket.io");
-const session = require('express-session');
-const flash = require('connect-flash');
+// const session = require('express-session');
+// const { flash } = require('express-flash-message');
+
 const con = require('./functions/dbConnection.js');
 
 var bodyParser = require("body-parser");
@@ -27,10 +28,22 @@ app.use('/public', express.static('public'));
 app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(cookie_parser());
+// // express-session
+// app.use(
+//   session({
+//     secret: 'secret',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+//       // secure: true, // becareful set this option, check here: https://www.npmjs.com/package/express-session#cookiesecure. In local, if you set this to true, you won't receive flash as you are using `http` in local, but http is not secure
+//     },
+//   })
+// );
 //
-// app.use(express.session({ cookie: { maxAge: 60000 }}));
-// app.use(flash());
-
+// // apply express-flash-message middleware
+// app.use(flash({ sessionKeyName: 'flashMessage' }));
+//
 
 
 // using routes
@@ -91,19 +104,19 @@ io.on('connection' , function(socket){
 
 
 
-
-var io = socket(server);
-
-//here socket = the particular socket established between client and server
-io.on('connection' , function(socket){
-  console.log(`connection established between server and client @ ${socket.id}`);
-  var location = [26.082301516170155, 91.55944356559085]
-  if(true){
-  	var flag = true;
-  	socket.emit("flag",flag);
-  	socket.emit("location",location);
-  }
-})
+//
+// var io = socket(server);
+//
+// //here socket = the particular socket established between client and server
+// io.on('connection' , function(socket){
+//   console.log(`connection established between server and client @ ${socket.id}`);
+//   var location = [26.082301516170155, 91.55944356559085]
+//   if(true){
+//   	var flag = true;
+//   	socket.emit("flag",flag);
+//   	socket.emit("location",location);
+//   }
+// })
 
 //socket.io
 //

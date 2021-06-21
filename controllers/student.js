@@ -1,5 +1,7 @@
 var con = require("../functions/dbConnection.js");
 var {hashPassword} = require("../functions/functions.js");
+const { validationResult } = require('express-validator');
+
 exports.studentHome = (req,res) => {
   console.log("heloo");
   res.render('studentHome');
@@ -7,6 +9,11 @@ exports.studentHome = (req,res) => {
 
 
 exports.editProfile = async (req, res) => {
+  const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      //console.log(errors.array()[0].msg + " in " + errors.array()[0].param);
+      return res.render('studentHome',{ message: errors.array()[0].msg + " in " + errors.array()[0].param });
+    }
   try{
     var encry_pass = await hashPassword(req.body.password);
     var sql = "update student set email = '" + req.body.email +"',password = '" + encry_pass +
@@ -15,16 +22,17 @@ exports.editProfile = async (req, res) => {
     await con.query(sql, (err,result)=>{
         if(err){
           console.log(err);
-          console.log('database issue.....try again later!');
-          res.redirect('/student');
+
+          res.render('studentHome',{message: "database issue"});
         }else{
-          console.log('successfully updated!');
-          res.redirect('/student');      }
+
+          res.render('studentHome',{message: "successfully updated!....if not, enter correct roll number and try again"});
+              }
     });
   }catch(err){
     console.log(err);
-    console.log('internal error.....try again later!');
-    res.redirect('/student');
+
+    res.render('studentHome',{message: "internal error.....try again later!"});
 
   }
 

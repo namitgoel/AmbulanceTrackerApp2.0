@@ -4,6 +4,7 @@ var mysql = require('mysql');
 const {getQuery} = require('../functions/query');
 const bcrypt = require("bcrypt");
 
+
 exports.login = (req,res) =>{
   res.render('login');
 }
@@ -55,4 +56,3 @@ exports.sigin = async (req,res) =>{
     res.sendStatus(500);
   }
 }
-
