@@ -17,7 +17,7 @@ exports.sigin = async (req,res) =>{
     var values = [req.body.email];
     var role = req.body.role;
     var sql = getQuery(role);
-    console.log(sql);
+    // console.log(sql);
     await con.query(sql, values, async function (err, result){
       if(err){
         throw err;
@@ -29,12 +29,12 @@ exports.sigin = async (req,res) =>{
           }else{
             const match = await bcrypt.compare(req.body.password, result[0].password);
             if(match){
-              // res.cookie('username', values[0]);
-              // res.cookie('role', role);
+              res.cookie('username', values[0]);
+              res.cookie('role', role);
               req.username = values[0];
               req.role = role;
-              console.log(req);
-              console.log('/' + role + '/');
+              // console.log(req);
+              // console.log('/' + role + '/');
               res.redirect("/" + role + "/");
             }else{
               res.redirect("/");
@@ -44,7 +44,7 @@ exports.sigin = async (req,res) =>{
         catch(error)
         {
           console.log(error);
-          // res.sendStatus(500);
+          res.sendStatus(500);
         }
       }
     });

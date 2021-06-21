@@ -4,6 +4,8 @@ const mysql = require('mysql');
 const cookie_parser = require("cookie-parser");
 const {checkStatus} = require('./functions/functions');
 const studentHome = require('./routes/student');
+const authRoutes = require('./routes/auth');
+// const studentRoutes = require('./routes/student');
 // const driverRoutes = require('./routes/driver');
 const loginPage = require('./routes/login');
 // const adminRoutes = require("./routes/admin");
@@ -33,11 +35,18 @@ app.use(cookie_parser());
 
 // using routes
 app.use("/", loginPage);
+
 app.use("/student", studentHome);
 
 //sockets
 var socket = require('socket.io');
 
+
+app.use("/authority",authRoutes);
+// app.use("/student", studentRoutes);
+// app.use("/driver", driverRoutes);
+// app.use("/login", loginRoutes);
+// app.use("/admin",adminRoutes);
 
 
 //firing up the server
@@ -82,6 +91,19 @@ io.on('connection' , function(socket){
 
 
 
+
+var io = socket(server);
+
+//here socket = the particular socket established between client and server
+io.on('connection' , function(socket){
+  console.log(`connection established between server and client @ ${socket.id}`);
+  var location = [26.082301516170155, 91.55944356559085]
+  if(true){
+  	var flag = true;
+  	socket.emit("flag",flag);
+  	socket.emit("location",location);
+  }
+})
 
 //socket.io
 //
