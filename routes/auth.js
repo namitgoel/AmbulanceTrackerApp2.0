@@ -7,8 +7,6 @@ const {isLoggedIn}=require('../middlewares/authentication')
 
 router.get("/", [isLoggedIn, isAuthority], home);
 
-router.get("/records", [isLoggedIn, isAuthority], records);
-
 router.get("/register", [isLoggedIn, isAuthority], renderForm);
 
 router.get("/track", [isLoggedIn, isAuthority], track);

@@ -3,22 +3,17 @@ const {getQuery} = require('../functions/query');
 const bcrypt = require("bcrypt");
 const {hashPassword} = require("../functions/functions");
 
-exports.home = (req,res) =>{
-  res.render('authHome');
-}
+exports.home = async (req,res) =>{
+  var sql = "select * from records";
 
-exports.records = async (req,res) =>{
-	var sql = "select * from records";
-
-	await con.query(sql, async function (err, result){
+  await con.query(sql, async function (err, result){
       if(err){
         throw err;
       }else{
-      	res.render('records', {records: result})
+        res.render('authHome', {records: result})
       }
-  	})
+    })
 }
-
 exports.renderForm = (req,res)=>{
   res.render('authRegister');
 }

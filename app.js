@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cookie_parser = require("cookie-parser");
-const {checkStatus} = require('./functions/functions');
+// const {hashPassword} = require('./functions/functions');
 const studentHome = require('./routes/student');
 const authRoutes = require('./routes/auth');
 // const studentRoutes = require('./routes/student');
@@ -129,6 +129,26 @@ io.on('connection' , function(socket){
       console.log(err);
     }
   })
+
+
+  async function getCoord(){
+  try{
+      const sql = 'select * from temp_data where ambulance_no = 1';
+      await con.query(sql,(err, result)=>{
+        if(err){
+          console.log(err);
+        }else{
+          var coordinates = {lat: result[0].lat, lng: result[0].lon}
+          socket.emit('ambulanceCoord',{coord: coordinates});
+        }
+      })
+    }catch(err){
+      console.log(err);
+    }
+}
+
+setInterval(getCoord, 10000)
+
 });
 // app.use("/student", studentRoutes);
 // app.use("/driver", driverRoutes);
