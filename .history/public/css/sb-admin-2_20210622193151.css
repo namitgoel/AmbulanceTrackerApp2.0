@@ -3038,6 +3038,7 @@ input[type="button"].btn-block {
   text-align: center;
   text-justify: inter-word;
   font-size:20px;
+  padding-block: 0px;
 }
 
 @media (min-width: 576px) {

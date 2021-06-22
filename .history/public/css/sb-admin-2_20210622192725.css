@@ -3034,7 +3034,7 @@ input[type="button"].btn-block {
   left: auto;
 }
 
-.paragraph {
+paragraph {
   text-align: center;
   text-justify: inter-word;
   font-size:20px;
