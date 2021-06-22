@@ -54,16 +54,16 @@
                   </ul>
 
               </nav>
-              <div id="start" class="container mt-3"><br>
-                  <button type="submit" id="startride" class="form-control btn btn-primary">Start Ride</button>
+              <div id="start" class="container mt-3">
+                <br>
+                  <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>
               </div>
               
-              <div class="d-none container mt-3" id="end"><br>
-                  <button type="submit" id="endride" class="form-control btn btn-primary">End Ride</button>     
+              <div class="d-none container mt-3" id="end">
+                <br>
+                  <button type="submit" id="endride" onclick="check()" class="d-none form-control btn btn-primary">End Ride</button>     
               </div>
                         
-              <!-- <button type="button" name="startRide" id="start">Start-Ride</button>
-              <button type="button" name="endRide" id="end">End-Ride</button> -->
         </div>
 
 
@@ -108,6 +108,8 @@
   <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="../public/js/sb-admin-2.min.js"></script>
+  <script src="../public/js/driver.js"></script>
   <script type="text/javascript" src="../public/js/driver.js">
 
     </script>

@@ -12,7 +12,7 @@ endRide.addEventListener('click',stop);
 //functions
 function sendLocation(){
   socket = io.connect('http://localhost:3000');
-  tracker = setInterval(getLocation, 10000);
+  tracker = setInterval(getLocation, 10000);\
   startRide.classList.add('d-none');
   endRide.classList.remove('d-none');
 }

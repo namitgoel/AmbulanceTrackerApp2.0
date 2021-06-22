@@ -2,6 +2,17 @@ var  startRide = document.getElementById('start');
 var endRide = document.getElementById('end');
 var tracker;
 var socket;
+
+startRide.addEventListener('click', function(){
+  document.getElementById('startride').classList.add('d-none');
+  document.getElementById('endride').classList.remove('d-none');
+});
+
+endRide.addEventListener('click', function(){
+  document.getElementById('startride').classList.remove('d-none');
+  document.getElementById('endride').classList.add('d-none');
+});
+
 //start emitting location coor.
 startRide.addEventListener('click', sendLocation);
 
@@ -13,8 +24,6 @@ endRide.addEventListener('click',stop);
 function sendLocation(){
   socket = io.connect('http://localhost:3000');
   tracker = setInterval(getLocation, 10000);
-  startRide.classList.add('d-none');
-  endRide.classList.remove('d-none');
 }
 
 function test(){
@@ -39,6 +48,4 @@ function stop(){
   clearInterval(tracker);
   socket.emit('nowAvailable');
   socket.close();
-  startRide.classList.remove('d-none');
-  endRide.classList.add('d-none');
 }
