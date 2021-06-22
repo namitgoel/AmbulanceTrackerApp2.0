@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,11 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Map</title>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" ></script>
+    <title>Register</title>
+
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../public/css/map.css" /> 
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -54,8 +52,8 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Register -->
-            <li class="nav-item">
-                <a class="nav-link" href="/authority/register">
+            <li class="nav-item active">
+                <a class="nav-link" href="/authority">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                     <span>Register</span></a>
             </li>
@@ -65,14 +63,14 @@
 
 
             <!-- Nav Item - Track -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/authority/track">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span>Track</span></a>
             </li>
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
+            <hr class="sidebar-divider">
+            </ul>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -96,24 +94,25 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                 
+                    <!-- Topbar Search -->
 
                          <div class="d-sm-flex align-items-center justify-content-between mb-0">
                             <h1 class="h3 mb-0 text-gray-800">Ambulance Tracker</h1>
                         </div>
-
-
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+
+
+
                         <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
-                      
+
                                 <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a> -->
-                            
+
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -124,9 +123,101 @@
 
                 </nav>
                 <!-- End of Topbar -->
-             <div id="map"></div>
-            </div>
+                <div class="container mt-3">
+                    <form action="#" method="post">
+                        <p>Data file:</p>
+                        <div class="custom-file col-lg-12 mb-3">
+                          <input type="file" class="custom-file-input" id="customFile" name="filename">
+                          <label class="custom-file-label" for="customFile">Choose csv File</label>
+                        </div>
 
+                        <div class="custom-file col-lg-12 mb-3">
+                          <button type="submit" class="form-control btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <br>
+                <!-- <hr class="sidebar-divider my-0"> -->
+
+                <div class="container">
+
+                    <!-- <div class="card o-hidden border-0 shadow-lg my-5"> -->
+                        <!-- <div class="card-body p-0"> -->
+                            <!-- Nested Row within Card Body -->
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Add a Student</h1>
+                            </div>
+                            <!-- <div class="row"> -->
+
+                                <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+                                <div class="col-lg-12">
+                                    <div >
+
+                                        <form class="user" action="/authority/register" method="post">
+<!--                                             <div class="form-group row"> -->
+                                                 <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="fname"
+                                                        placeholder="First Name" name="fname">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="lnameame"
+                                                        placeholder="Last Name" name="lname">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="rollnumber"
+                                                    placeholder="Roll Number" name="rollno">
+                                                </div>
+
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="hostel"
+                                                        placeholder="Hostel" name="hostel">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="password" placeholder="Password" name="password">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                            <div class="mt-3">
+                                                <button type="submit" class="form-control btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+
+                <!-- </div> -->
+            </div>
             <!-- End of Main Content -->
 
         </div>
@@ -178,18 +269,16 @@
     <!-- Page level custom scripts -->
     <script src="../public/js/demo/chart-area-demo.js"></script>
     <script src="../public/js/demo/chart-pie-demo.js"></script>
-    <script type="text/javascript" src="../public/js/map.js"></script>
-    
+    <script src="../public/js/register.js"></script>
 
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKPNyswxEm2yGfKN2KF2HX1LJdT5vIQes&callback=initMap&libraries=&v=weekly"
-      
-    ></script>
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
 </body>
-<script src="/public/js/authMap.js"></script>
-<script
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKPNyswxEm2yGfKN2KF2HX1LJdT5vIQes&callback=initMap&libraries=&v=weekly"
-     
-   ></script>
+
 </html>

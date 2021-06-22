@@ -20,7 +20,7 @@
     <link href="../public/css/sb-admin-2.min.css" rel="stylesheet">
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" ></script>
   </head>
-
+  
   <body id="page-top">
      <!-- Page Wrapper -->
      <div id="wrapper">
@@ -40,7 +40,7 @@
 
                   <!-- Topbar Search -->
 
-                       <div class="d-sm-flex align-items-center justify-content-between mb-0">
+                       <div class="d-sm-flex align-items-center justify-content-between mb-4">
                           <h1 class="h3 mb-0 text-gray-800">Ambulance Tracker</h1>
                       </div>
                   <!-- Topbar Navbar -->
@@ -54,17 +54,73 @@
                   </ul>
 
               </nav>
-              <div id="start" class="container mt-3"><br>
-                  <button type="submit" id="startride" class="form-control btn btn-primary">Start Ride</button>
+              
+
+          <div class="d-none" id="flag1"><h1>No Rides For Now!!!!!!</h1></div>
+              <div class="d-none" id="flag2">
+                  <table class="table">
+                      <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Hostel</th>
+                      <th>Roll no.</th>
+                      <th>Mobile</th>
+                      <th>......</th>
+                  </tr>
+              </thead>
+
+                  <tr>
+                      <td><%= fname %></td>
+                      <td><%= hostel %></td>
+                      <td><%= rollnumber %></td>
+                      <td><%= mobile %></td>
+                      <td><li class="nav-item active">
+                              <a class="" onclick="call()" href="tel:<%= mobile %>">
+                              <i class="fas fa-fw fa-phone" aria-hidden="true"></i>
+                              <span>Call</span>
+                          </a>
+                          </li>
+                      </td>
+                  </tr>
+              </table>
+              </div>
+
+              <div class="d-none" id="flag3">
+                  <button type="submit" onclick="check()" id="cancel" class="form-control btn btn-primary">Cancel</button>
+                  <br>
+                  <hr>
+                  <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>
               </div>
               
-              <div class="d-none container mt-3" id="end"><br>
-                  <button type="submit" id="endride" class="form-control btn btn-primary">End Ride</button>     
+              <div class="d-none" id="flag4">
+                  <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>    
               </div>
-                        
-              <!-- <button type="button" name="startRide" id="start">Start-Ride</button>
-              <button type="button" name="endRide" id="end">End-Ride</button> -->
-        </div>
+              <form action="/driver/pending" class="endride0" method="get">
+                  <button type="submit" id="endride" onclick="check()" class="d-none form-control btn btn-primary">End Ride</button>     
+              </form>
+                
+              
+          <% if(flag == 1){ %>
+              <script type="text/javascript">
+                  document.getElementById('flag1').classList.remove('d-none');
+              </script>
+          <% }else if(flag == 2){ %>
+              <script type="text/javascript">
+                  document.getElementById('flag2').classList.remove('d-none');
+              </script>
+          <% }else if(flag == 3){ %>
+              <script type="text/javascript">
+                  document.getElementById('flag3').classList.remove('d-none');
+              </script>
+              
+          <% }else if(flag == 4){ %>                   
+              <script type="text/javascript">
+                  document.getElementById('flag4').classList.remove('d-none');
+              </script>
+          <% } %>
+              
+              
+          </div>
 
 
           <!-- End of Main Content -->
@@ -108,6 +164,8 @@
   <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="../public/js/sb-admin-2.min.js"></script>
+  <script src="../public/js/driver.js"></script>
   <script type="text/javascript" src="../public/js/driver.js">
 
     </script>

@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -10,10 +10,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Records</title>
-
+    <title>Map</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" ></script>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../public/css/map.css" /> 
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -42,8 +43,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+              <!-- Nav Item - Dashboard -->
+              <li class="nav-item">
                 <a class="nav-link" href="/authority">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Records</span></a>
@@ -64,15 +65,13 @@
 
 
             <!-- Nav Item - Track -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/authority/track">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span>Track</span></a>
             </li>
-
-            <hr class="sidebar-divider">
-
             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -97,15 +96,24 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                 
 
-                         <div class="d-sm-flex align-items-center justify-content-between mb-0">
+                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             <h1 class="h3 mb-0 text-gray-800">Ambulance Tracker</h1>
                         </div>
+
+
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
-                 
+                      
+                                <!-- <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a> -->
+                            
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -115,35 +123,10 @@
                     </ul>
 
                 </nav>
-                
-                <table style="width:100%">
-                      <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Patient</th>
-                        <th>Acommopanier 1</th>
-                        <th>Acommopanier 2</th>
-                        <th>DriverId</th>
-
-                      </tr>
-                      <% for(var i = 0; i < records.length ; i++){ %>
-                      <tr>
-                        <td><%=records[i].date%></td>
-                        <td><%=records[i].start_time%></td>
-                        <td><%=records[i].patient_roll%></td>
-                        <td><%=records[i].acommopanier1_roll%></td>
-                        <td><%=records[i].acommopanier2_roll%></td>
-                        <td><%=records[i].driver_id%></td>
-                      </tr>
-                    <% }; %>
-                  </table>
                 <!-- End of Topbar -->
-
-                <!--Records Table Here-->
-
-
-                <!-- end of table of records -->
+             <div id="map"></div>
             </div>
+
             <!-- End of Main Content -->
 
         </div>
@@ -195,9 +178,18 @@
     <!-- Page level custom scripts -->
     <script src="../public/js/demo/chart-area-demo.js"></script>
     <script src="../public/js/demo/chart-pie-demo.js"></script>
+    <script type="text/javascript" src="../public/js/map.js"></script>
+    
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKPNyswxEm2yGfKN2KF2HX1LJdT5vIQes&callback=initMap&libraries=&v=weekly"
+      
+    ></script>
 
 </body>
-
+<script src="/public/js/authMap.js"></script>
+<script
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKPNyswxEm2yGfKN2KF2HX1LJdT5vIQes&callback=initMap&libraries=&v=weekly"
+     
+   ></script>
 </html>
-
-
