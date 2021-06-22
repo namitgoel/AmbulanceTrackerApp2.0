@@ -6,7 +6,7 @@ const {checkStatus} = require('./functions/functions');
 const studentHome = require('./routes/student');
 const authRoutes = require('./routes/auth');
 // const studentRoutes = require('./routes/student');
-// const driverRoutes = require('./routes/driver');
+const driverRoutes = require('./routes/driver');
 const loginPage = require('./routes/login');
 // const adminRoutes = require("./routes/admin");
 // const {alterFlag, startLatLng, endLatLng, getLocation} = require("./functions/functions");
@@ -50,12 +50,13 @@ app.use(cookie_parser());
 app.use("/", loginPage);
 
 app.use("/student", studentHome);
-
+app.use("/authority",authRoutes);
+app.use("/driver", driverRoutes);
 //sockets
 var socket = require('socket.io');
 
 
-app.use("/authority",authRoutes);
+
 // app.use("/student", studentRoutes);
 // app.use("/driver", driverRoutes);
 // app.use("/login", loginRoutes);
@@ -95,6 +96,39 @@ io.on('connection' , function(socket){
         console.log(err);
       }
   });
+  //b/w server and driver
+  socket.on('liveLocation',async function(data){
+    console.log(data.lat);
+    console.log(data.lon);
+    //update lat & lon in // DB
+    try{
+      var sql = 'update temp_data set available = 0, lat ='+data.lat + ', lon =' + data.lon +' where ambulance_no = 1;';
+      await con.query(sql, (err,result)=>{
+          if(err){
+            console.log(err);
+          }else{
+            console.log('location updated');
+          }
+        });
+    }catch(err){
+      console.log(err);
+    }
+  })
+  //ambulance available after ride ends
+  socket.on('nowAvailable', async function(){
+    try{
+      var sql = 'update temp_data set available = 1 where ambulance_no = 1';
+      await con.query(sql,(err, result)=>{
+        if(err){
+          console.log(err);
+        }else{
+          console.log('ambulance available now');
+        }
+      })
+    }catch(err){
+      console.log(err);
+    }
+  })
 });
 // app.use("/student", studentRoutes);
 // app.use("/driver", driverRoutes);
@@ -105,9 +139,8 @@ io.on('connection' , function(socket){
 
 
 //
-// var io = socket(server);
 //
-// //here socket = the particular socket established between client and server
+//here socket = the particular socket established between client and server
 // io.on('connection' , function(socket){
 //   console.log(`connection established between server and client @ ${socket.id}`);
 //   var location = [26.082301516170155, 91.55944356559085]
