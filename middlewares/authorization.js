@@ -5,3 +5,19 @@ exports.isAuthority =(req, res, next)=>{
         res.redirect('/')
     }
 }
+
+exports.isDriver =(req, res, next)=>{
+    if(req.cookies.role === "driver"){
+        next()
+    }else{
+        res.redirect('/')
+    }
+}
+
+exports.isStudent =(req, res, next)=>{
+    if(req.cookies.role === "student"){
+        next()
+    }else{
+        res.redirect('/')
+    }
+}
