@@ -29,7 +29,7 @@ socket.on('availabiltyStatus', function(data){
       message.innerHTML="<br> <br><span style='font-size:20px'>Ambulance is available at the moment. <br> Please contact the Care Taker.</span>";
   }
   else{
-    message.innerHTML="Ambulance is unavailable at the current moment.";
+    message.innerHTML="<br> <br><span style='font-size:20px'>Ambulance is unavailable at the current moment. </span>";
   }
   console.log(data);
 })

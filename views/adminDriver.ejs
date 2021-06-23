@@ -9,10 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register</title>
+    <title>Register Driver</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -33,49 +31,39 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/authority">
-                <div class="sidebar-brand-icon">
+            
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon"> 
                     <i class="fas fa-laptop-medical" aria-hidden="true"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Authority</div>
+                </div> 
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-              <!-- Nav Item - Dashboard -->
-              <li class="nav-item">
-                <a class="nav-link" href="/authority">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Records</span></a>
-            </li>
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Register -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/authority/register">
+            <li class="nav-item ">
+                <a class="nav-link" href="/admin/registerAuth">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span>Register</span></a>
+                    <span>Register Authority</span></a>
             </li>
 
              <!-- Divider -->
             <hr class="sidebar-divider">
 
-
-            <!-- Nav Item - Track -->
-            <li class="nav-item">
-                <a class="nav-link" href="/authority/track">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Track</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/registerDriver">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <span>Register Driver</span></a>
             </li>
-            <!-- Divider -->
+
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler (Sidebar) -->
             <!-- <div class="text-center d-none d-md-inline">
-                <button type="button" class="rounded-circle border-0" id="sidebarToggle"></button>
-                </button>
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div> -->
 
 
@@ -106,7 +94,6 @@
 
 
 
-
                         <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
 
@@ -125,22 +112,7 @@
 
                 </nav>
                 <!-- End of Topbar -->
-                <div class="container mt-3">
-                    <form action="#" method="post">
-                        <p>Data file:</p>
-                        <div class="custom-file col-lg-12 mb-3">
-                          <input type="file" class="custom-file-input" id="customFile" name="filename">
-                          <label class="custom-file-label" for="customFile">Choose csv File</label>
-                        </div>
 
-                        <div class="custom-file col-lg-12 mb-3">
-                          <button type="submit" class="form-control btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-
-                <br>
-                <!-- <hr class="sidebar-divider my-0"> -->
 
                 <div class="container">
 
@@ -148,7 +120,7 @@
                         <!-- <div class="card-body p-0"> -->
                             <!-- Nested Row within Card Body -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Add a Student</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Add Driver</h1>
                             </div>
                             <!-- <div class="row"> -->
 
@@ -156,23 +128,14 @@
                                 <div class="col-lg-12">
                                     <div >
 
-                                        <form class="user" action="/authority/register" method="post">
+                                        <form class="user" action="/admin/registerDriver" method="post">
 <!--                                             <div class="form-group row"> -->
                                                  <hr class="sidebar-divider my-0">
                                                 <br>
 
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="fname"
-                                                        placeholder="First Name" name="fname">
-                                                </div>
-
-                                                <br>
-                                                <hr class="sidebar-divider my-0">
-                                                <br>
-
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-user" id="lnameame"
-                                                        placeholder="Last Name" name="lname">
+                                                    <input type="number" class="form-control form-control-user" id="did"
+                                                        placeholder="Driver ID" name="did" required>
                                                 </div>
 
                                                 <br>
@@ -180,27 +143,36 @@
                                                 <br>
 
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="rollnumber"
-                                                    placeholder="Roll Number" name="rollno">
-                                                </div>
-
-
-                                                <br>
-                                                <hr class="sidebar-divider my-0">
-                                                <br>
-
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-user" id="hostel"
-                                                        placeholder="Hostel" name="hostel">
+                                                    <input type="text" class="form-control form-control-user" id="nameame"
+                                                        placeholder="Name" name="name">
                                                 </div>
 
                                                 <br>
                                                 <hr class="sidebar-divider my-0">
                                                 <br>
+
+
+                                                <!-- <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="username"
+                                                        placeholder="Username" name="username" required>
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br> -->
 
                                                 <div class="form-group">
                                                     <input type="password" class="form-control form-control-user"
-                                                        id="password" placeholder="Password" name="password">
+                                                        id="password" placeholder="Password" name="password" required>
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user"
+                                                        id="mobile" placeholder="Mobile" name="mobile" required>
                                                 </div>
 
                                                 <br>
@@ -209,9 +181,9 @@
 
                                             <div class="mt-3">
                                                 <button type="submit" class="form-control btn btn-primary">Submit</button>
-                                                <br>
                                             </div>
                                         </form>
+
 
                                     </div>
                                 </div>
@@ -220,6 +192,7 @@
                     <!-- </div> -->
 
                 <!-- </div> -->
+            </div>
             </div>
             <!-- End of Main Content -->
 
@@ -248,9 +221,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form action="/authority/logout" method="post">
-                        <button class="btn btn-primary" type="submit" value="Logout">Logout</button>
-                      </form>
+                    <a class="btn btn-primary" href="/auth/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -263,20 +234,8 @@
     <!-- Core plugin JavaScript-->
     <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <script src="../public/js/register.js"></script>
-
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-          var fileName = $(this).val().split("\\").pop();
-          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../public/js/sb-admin-2.min.js"></script>
 
 </body>
 
