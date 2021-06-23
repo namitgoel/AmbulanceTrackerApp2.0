@@ -9,6 +9,36 @@ exports.hashPassword = async (password) => {
   }
 };
 
+exports.getvalues = (date, req) => {
+  try{
+  	var values = [date[0], date[1],req.patient];
+  	if(req.acmp1 === '' && req.acmp2 === ''){
+  		values.push('none');
+  		values.push('none');
+  		// console.log(values)
+  	}
+  	if(!(req.acmp1 === '') && req.acmp2 === ''){
+  		values.push(req.acmp1);
+  		values.push('none');
+  		// console.log(values)
+  	}
+  	if(req.acmp1 === '' && !(req.acmp2 === '')){
+  		values.push('none');
+  		values.push(req.acmp2);
+  		// console.log(values)
+  	}
+    if(!(req.acmp1 === '') && !(req.acmp2 === '')){
+      values.push(req.acmp1);
+      values.push(req.acmp2);
+      // console.log(values)
+    }
+
+  	return values;
+  }catch{
+    res.status(500).send('not working');
+  }
+};
+
 //
 // exports.checkStatus = async () => {
 //   try{

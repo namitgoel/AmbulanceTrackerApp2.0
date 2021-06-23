@@ -61,7 +61,48 @@
               <div class="d-none container mt-3" id="end"><br>
                   <button type="submit" id="endride" class="form-control btn btn-primary">End Ride</button>     
               </div>
-                        
+              <div class="container">
+                  <form class="user d-none" action="" id="form"  method="post">
+                    <br>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control form-control-user" id="roll_no" placeholder="Patient Roll Number" name="roll_no" required>
+                    </div>
+                    <br> 
+                    <hr class="sidebar-divider my-0">
+                    <br>
+                         
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control form-control-user" id="acmp1" placeholder="Accompanier1" name="acmp1">
+                    </div>
+                                                  
+                    <br>
+                    <hr class="sidebar-divider my-0">
+                    <br>
+                                                  
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control form-control-user" id="acmp2" placeholder="Accompanier2" name="acmp2" >
+                    </div>
+
+                    <br>
+                    <hr class="sidebar-divider my-0">
+                    <br>
+                    <br>  
+                    <button class="btn btn-primary" id="submitbtn" value="Submit">Submit</button>
+                 </form>
+              </div>
+              
+              <div class="container">
+                  <form class="user d-none" action="" id="otp"  method="post">
+                    <br>
+                    <input type="hidden" id="cotp" name="cotp">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control form-control-user" id="otpip" placeholder="Enter Otp" name="otp" required>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" id="otpbtn" value="Submit">Submit</button>
+                 </form>
+              </div>
+
               <!-- <button type="button" name="startRide" id="start">Start-Ride</button>
               <button type="button" name="endRide" id="end">End-Ride</button> -->
         </div>
@@ -94,7 +135,9 @@
               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
               <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" id="logout" href="/auth/logout">Logout</a>
+                  <form action="/driver/logout" method="post">
+                        <button class="btn btn-primary" type="submit" value="Logout">Logout</button>
+                      </form>
               </div>
           </div>
       </div>

@@ -40,3 +40,9 @@ exports.editProfile = async (req, res) => {
   }
 
 };
+
+exports.logout = (req,res)=>{
+  res.clearCookie('username');
+  res.clearCookie('role');
+  res.redirect("/");
+}
