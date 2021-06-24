@@ -10,11 +10,13 @@ var cancel = document.getElementById('cancel');
 
 edit.addEventListener('click', function(){
   document.getElementById('form').classList.remove('d-none');
+  document.getElementById('userDropdown').classList.add('d-none');
   document.getElementById('checkavail').classList.add('d-none');
 });
 
 cancel.addEventListener('click', function(){
   document.getElementById('form').classList.add('d-none');
+  document.getElementById('userDropdown').classList.remove('d-none');
   document.getElementById('checkavail').classList.remove('d-none');
 });
 
