@@ -1,4 +1,4 @@
-var messagebird = require('messagebird')('IlRK63YH38NOAE2LZnSqKoFK9');
+var messagebird = require('messagebird')('Aqe6EW5qCpafjODec7iqHxNhT');
 const {getvalues} = require("../functions/functions");
 const con = require('../functions/dbConnection.js');
 
