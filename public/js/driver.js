@@ -13,7 +13,7 @@ endRide.addEventListener('click',stop);
 
 //functions
 function sendLocation(){
-  socket = io.connect('http://localhost:3000');
+  socket = io.connect('https://ambulancetrackerapk.herokuapp.com/');
   tracker = setInterval(getLocation, 10000);
   startRide.classList.add('d-none');
   // endRide.classList.remove('d-none');
@@ -85,7 +85,7 @@ function submitdata(event){
       success: function (data) {
         if(data === true){
           otp.classList.add('d-none');
-          endRide.classList.remove('d-none');   
+          endRide.classList.remove('d-none');
         }else{
           alert('Enter Valid OTP!!!')
           document.getElementById('otpip').value = "";

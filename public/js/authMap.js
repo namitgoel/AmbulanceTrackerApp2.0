@@ -1,5 +1,5 @@
 let map;
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('https://ambulancetrackerapk.herokuapp.com/');
 var latitude = 26.082301516170155, longitude = 91.55944356559085;
 
 socket.on('ambulanceCoord',function(data){
