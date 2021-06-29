@@ -6,4 +6,11 @@ create table faculty(faculty_id int NOT NULL primary key, password varchar(255))
 
 create table admin(admin_id int NOT NULL primary key, password varchar(255));
 
-create table records(date date, start_time time, end_time time, distance_travelled int, patient_roll int NOT NULL, acommopanier1_roll int, acommopanier2_roll int, driver_id int, FOREIGN KEY (patient_roll) REFERENCES student(roll_no),FOREIGN KEY (acommopanier1_roll) REFERENCES student(roll_no),FOREIGN KEY (acommopanier2_roll) REFERENCES student(roll_no), FOREIGN KEY (driver_id) REFERENCES driver(driver_id));
+create table records(
+ride_id int NOT NULL AUTO_INCREMENT primary key,
+date_of_ride date,
+time_of_ride time,
+patient_roll int,
+driver_id int,
+foreign key(patient_roll) references student(roll_no),
+foreign key(driver_id) references driver(driver_id));
